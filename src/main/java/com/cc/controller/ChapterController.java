@@ -31,7 +31,7 @@ public class ChapterController {
     @ResponseBody
     public Chapter getChapter(@PathVariable("novelId") int novelId, @PathVariable("chapterNum") int chapterNum) throws JsonProcessingException {
         System.out.println("testmaster");
-        System.out.println(test);
+        System.out.println("test");
         try {
             return chapterService.getChapterById(novelId, chapterNum);
         } catch (Exception e) {
