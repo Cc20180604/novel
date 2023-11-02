@@ -30,7 +30,7 @@ public class ChapterController {
     @GetMapping("/getChapter/{novelId}/{chapterNum}")
     @ResponseBody
     public Chapter getChapter(@PathVariable("novelId") int novelId, @PathVariable("chapterNum") int chapterNum) throws JsonProcessingException {
-        System.out.println("666");
+        System.out.println("777");
         try {
             return chapterService.getChapterById(novelId, chapterNum);
         } catch (Exception e) {
