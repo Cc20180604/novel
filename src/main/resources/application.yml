@@ -1,0 +1,57 @@
+server:
+  # 端口号
+  port: 6888
+  #项目名 不写默认/
+  servlet:
+    context-path: /
+
+
+
+  #  maxFileSize 是单个文件大小
+  #  maxRequestSize是设置总上传的数据大小
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 50MB
+      max-request-size: 50MB
+  datasource:
+    username: root
+    password: 333
+    url: jdbc:mysql://localhost:3306/novel?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
+    driver-class-name: com.mysql.cj.jdbc.Driver  #文件大小 MB必须大写
+
+mybatis:
+#  mapper文件路径
+  mapper-locations: classpath:mapper/*.xml     # mapper映射文件
+#  日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+chapter:
+  num: 1
+  cnNum: 一
+  name: 陨落的天才
+  ps:
+    - "“斗之力，三段！”"
+    - "望着测验魔石碑上面闪亮得甚至有些刺眼的五个大字，少年面无表情，唇角有着一抹自嘲，紧握的手掌，因为大力，而导致略微尖锐的指甲深深的刺进了掌心之中，带来一阵阵钻心的疼痛…"
+    - "“萧炎，斗之力，三段！级别：低级！”测验魔石碑之旁，一位中年男子，看了一眼碑上所显示出来的信息，语气漠然的将之公布了出来…"
+novel:
+  id: 1
+  name: 斗破苍穹
+  author: 天蚕土豆
+  describes: 这里是属于斗气的世界，没有花俏艳丽的魔法，有的，仅仅是繁衍到巅峰的斗气！新书刚开，请各位兄弟多多支持，用推荐票和收藏，砸烂偶吧.^_^新书等级制度：斗者，斗师，大斗师，斗灵，斗王，斗皇，斗宗，斗尊，斗圣，斗帝。各位书友要是觉得《斗破苍穹》还不错的话请不要忘记向您QQ群和微博里的朋友推荐哦！...
+  wordCount: 8666666
+  chapterNames:
+    - 陨落的天才
+    - 斗气大陆
+    - 客人
+    - 云岚宗
+    - 聚气散
+
+path:
+  chapterPath: D://novel//
+
+  imgPath: D://img//
+  bgcPath: //bgc//
