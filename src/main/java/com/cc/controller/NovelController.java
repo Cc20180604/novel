@@ -40,7 +40,6 @@ public class NovelController {
     }
 
     //允许跨域请求
-
     @GetMapping("/get/{id}")
     @ResponseBody
     public String getNovel(@PathVariable("id") int id) {
