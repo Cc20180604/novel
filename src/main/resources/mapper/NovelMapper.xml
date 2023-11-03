@@ -31,7 +31,7 @@
                          author = #{author},
                          describes = #{describes},
                          wordcount = #{wordcount},
-                         lastChapter = #{NovelMapper.xml}
+                         lastChapter = #{lastChapter}
         WHERE id = #{id};
     </update>
 
