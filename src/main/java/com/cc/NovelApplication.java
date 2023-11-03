@@ -13,7 +13,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 @MapperScan(basePackages = "com.cc.dao")
 
 public class NovelApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(NovelApplication.class, args);
     }
