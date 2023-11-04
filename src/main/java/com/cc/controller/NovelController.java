@@ -28,12 +28,10 @@ public class NovelController {
         HashMap<String, Object> res = new HashMap();
         if(resId != null){
             //创建成功
-            res.put("res", "success");
             res.put("novelId",resId);
             return new AjaxResult(201,"创建成功", res);
         }else {
             //创建失败 id重复
-            res.put("res", "failure");
             res.put("novelId",null);
             return new AjaxResult(202, "id:" + novel.getId() + ",已经存在", res);
         }
