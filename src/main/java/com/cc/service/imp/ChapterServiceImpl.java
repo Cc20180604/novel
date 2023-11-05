@@ -16,4 +16,9 @@ public class ChapterServiceImpl implements ChapterService {
         Chapter chapter = (Chapter) FileUtil.disSerObject(this.chapterPath + "/" + novelId + "/" + chapterNum + ".chapter");
         return chapter;
     }
+
+    @Override
+    public boolean chaptersExist(int novelId) {
+        return false;
+    }
 }

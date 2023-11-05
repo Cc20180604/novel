@@ -42,6 +42,15 @@ public class FileUtil {
 
     }
 
+    /**
+     * 判断文件夹是否存在
+     * @param path
+     * @return
+     */
+    public static boolean dirExist(String path){
+        File file = new File(path);
+        return file.isDirectory() && file.exists();
+    }
 
 
 

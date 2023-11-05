@@ -6,4 +6,5 @@ import org.springframework.stereotype.Service;
 
 public interface ChapterService {
     Chapter getChapterById(int novelId, int chapterNum) throws Exception;
+    boolean chaptersExist(int novelId);
 }

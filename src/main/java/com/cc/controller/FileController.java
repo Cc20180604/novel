@@ -26,35 +26,11 @@ import java.util.List;
 @CrossOrigin(originPatterns = "http://localhost:8080")
 public class FileController {
 
-
     @Resource
     FileService fileService;
     @Resource
     NovelService novelService;
-    //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
-    @PostMapping("/upload")
-    @ResponseBody
-    public HashMap<Boolean,String> upload(
-        @RequestParam(value = "id", defaultValue = "-1")
-        Integer id,
-        @RequestParam("novel") MultipartFile novelFile
-    ){
-        HashMap<Boolean,String> res = new HashMap<>();
-        //持久化章节对象
-        try {
-            fileService.serChapters(id,novelFile);
-        } catch (IOException e) {
-            //throw new RuntimeException(e);
-            res.put(false,e.getMessage());
-            return res;
-        }
 
-        //上传成功
-        res.put(true,"success");
-        return res;
-        //return novelService.maxId();
-    }
 
     //允许跨域请求
     @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
