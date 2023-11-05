@@ -1,9 +1,10 @@
 package com.cc.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
-
+@Slf4j
 public class FileUtil {
     //序列化对象
     public static void serObject(Object obj, String path) throws IOException {
@@ -52,6 +53,35 @@ public class FileUtil {
         return file.isDirectory() && file.exists();
     }
 
+    public static void deleteDir(String path) throws FileNotFoundException {
+        //判断文件夹是否存在
+        if (!dirExist(path)) {
+            throw new FileNotFoundException("文件夹不存在:"+path);
+        }
+        //递归删除
+        deleteFolder(new File(path));
+        log.warn("已删除:"+path);
+
+    }
+
+
+
+    //递归删除文件夹
+    private static void deleteFolder(File file){
+        //判断是否为文件,显示删除的文件名称
+        if(file.isFile()){
+            file.delete();
+            //不是文件的话,就是文件夹
+        }else{
+            //获取文件夹中的所有File对象,如果为空,则files.length为0,次处程序不执行
+            File[] files=file.listFiles();
+            for (int i = 0; i < files.length; i++) {
+                deleteFolder(files[i]);
+            }
+        }
+        //最后删除空文件夹!!!
+        file.delete();
+    }
 
 
 }

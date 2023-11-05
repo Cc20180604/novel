@@ -94,8 +94,8 @@ public class NovelUtil {
                 chapter.setTitle(chapterTitle);
                 //新建段落集合
                 ps = new ArrayList<>();
-            }else if(str.startsWith("===") && !firstRead){
-                //第二次读取到标题段
+            }else if(str.startsWith("===") && !firstRead || !it.hasNext()){
+                //第二次读取到标题段 或是文件最后一行
                 //上一章结束 设置上一章正文集合并加入到章节集合中
                 chapters.add(chapter.setpList(ps));
                 //新建标题对象
@@ -116,6 +116,7 @@ public class NovelUtil {
 
 
         }
+
         HashMap res = new HashMap<String,List>();
         res.put("titles",titles);
         res.put("chapters",chapters);
@@ -179,9 +180,18 @@ public class NovelUtil {
         FileUtil.serObject(titles, chapterRootPath + novelId  + ".titles");
 
     }
-
+    //序列化标题与章节集合
     public static void serChaptersAndTitles(HashMap<String,List> chaptersAndTitles,  String rootPath,  String novelId) throws IOException {
         serChapters(chaptersAndTitles.get("chapters"),rootPath,novelId);
         serTitles(chaptersAndTitles.get("titles"),rootPath,novelId);
+    }
+
+    public static void serChapter(Chapter chapter, String path) throws IOException {
+
+        //新建章节路径
+        FileUtil.mkdirs(path);
+        //持久化为chapter文件
+        FileUtil.serObject(chapter, path);
+
     }
 }

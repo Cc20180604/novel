@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -45,6 +46,12 @@ public class FileServiceImpl implements FileService {
         HashMap<String,List> chaptersAndTitles= NovelUtil.toChapterList(novelFile);
 
         NovelUtil.serChaptersAndTitles(chaptersAndTitles,chapterPath, id+"");
+    }
+
+    @Override
+    public void serChapter(int NovelId, Chapter chapter) throws IOException {
+        String path = chapterPath + NovelId + "/" + chapter.getIndex();
+        NovelUtil.serChapter(chapter,path);
     }
 
 

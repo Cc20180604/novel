@@ -6,6 +6,9 @@ import com.cc.util.FileUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 @Service
 public class ChapterServiceImpl implements ChapterService {
     @Value("${path.chapterPath}")
@@ -19,6 +22,13 @@ public class ChapterServiceImpl implements ChapterService {
 
     @Override
     public boolean chaptersExist(int novelId) {
-        return false;
+        String chapterPath = this.chapterPath + "/" + novelId;
+        return FileUtil.dirExist(chapterPath);
+    }
+
+    @Override
+    public void deleteChapters(int novelId) throws FileNotFoundException {
+        String chapterPath = this.chapterPath + "/" + novelId;
+        FileUtil.deleteDir(chapterPath);
     }
 }
