@@ -6,7 +6,6 @@ server:
     context-path: /
 
 
-
   #  maxFileSize 是单个文件大小
   #  maxRequestSize是设置总上传的数据大小
 spring:
@@ -19,7 +18,7 @@ spring:
     username: root
     password: 333
     url: jdbc:mysql://localhost:3306/novel?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
-    driver-class-name: com.mysql.cj.jdbc.Driver  #文件大小 MB必须大写
+    driver-class-name: com.mysql.cj.jdbc.Driver  #文件大小 MB必须大写\
 
 mybatis:
 #  mapper文件路径
@@ -55,3 +54,6 @@ path:
 
   imgPath: D://img//
   bgcPath: //bgc//
+
+cors:
+  allow-head: http://localhost:8080

@@ -33,7 +33,6 @@ public class FileController {
 
 
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @GetMapping(value = "/img/{id}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     @ResponseBody
     public byte[] getImg(@PathVariable("id") int id){
@@ -45,7 +44,6 @@ public class FileController {
     }
 
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @GetMapping(value = "/bgc/{name}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     @ResponseBody
     public byte[] getImg(@PathVariable("name") String name){

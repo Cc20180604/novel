@@ -9,11 +9,12 @@ import com.cc.service.TitleService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
+import xin.altitude.cms.common.entity.AjaxResult;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
-@CrossOrigin(originPatterns = "http://localhost:8080")
 public class TitleController {
     @Resource
     TitleService titleService;
@@ -22,12 +23,16 @@ public class TitleController {
     //@CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @GetMapping("/titles/{novelId}")
     @ResponseBody
-    public ArrayList<Title> getTitles(@PathVariable("novelId") int novelId) {
+    public AjaxResult getTitles(@PathVariable("novelId") int novelId) {
+        ArrayList<Title> titles = null;
         try {
-            return titleService.getTitlesById(novelId);
+            titles = titleService.getTitlesById(novelId);
         } catch (Exception e) {
-            return null;
+            return new AjaxResult(400,e.getMessage());
         }
+        HashMap<String, ArrayList> data = new HashMap<>();
+        data.put("titles", titles);
+        return new AjaxResult(200, "success", data);
     }
 
 

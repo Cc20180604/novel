@@ -14,13 +14,11 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/novel")
-@CrossOrigin(originPatterns = "http://localhost:8080")
 public class NovelController {
     @Resource
     NovelService novelService;
 
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @PostMapping("/add")
     @ResponseBody
     public AjaxResult addNovel(@RequestBody Novel novel) {
@@ -39,7 +37,6 @@ public class NovelController {
     }
 
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @DeleteMapping("/delete/{id}")
     @ResponseBody
     public AjaxResult deleteNovelById(@PathVariable("id") int id) {
@@ -56,7 +53,6 @@ public class NovelController {
     }
 
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @PutMapping("/update")
     @ResponseBody
     public AjaxResult updateNovel(@RequestBody Novel novel) {
@@ -96,7 +92,6 @@ public class NovelController {
      * @param num 需要的数量
      * @return
      */
-    @CrossOrigin(originPatterns = "http://localhost:8080")
     @GetMapping("/rand/{num}")
     @ResponseBody
     public AjaxResult getRandNovel(@PathVariable("num") int num) {

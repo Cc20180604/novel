@@ -7,4 +7,7 @@ import java.util.ArrayList;
 
 public interface TitleService {
     ArrayList<Title> getTitlesById(int novelId) throws Exception;
+
+    void addTitle(int novelId, Title title);
+    ArrayList<Title> getTitles(int novelId);
 }

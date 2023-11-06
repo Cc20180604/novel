@@ -17,7 +17,6 @@ public class NovelListController {
     HotsMapper hotsMapper;
     //获取热度表
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @GetMapping("/hots")
     @ResponseBody
     public List<Hots> getHots() {
@@ -27,7 +26,6 @@ public class NovelListController {
 
     //获取推荐表
     //允许跨域请求
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @GetMapping("/recommend")
     @ResponseBody
     public List<Hots> getRecommends() {

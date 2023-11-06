@@ -18,4 +18,16 @@ public class TitleServiceImpl implements TitleService {
         ArrayList<Title> titles = (ArrayList<Title>) FileUtil.disSerObject(this.chapterPath + "/" + novelId +  "/"+novelId+".titles");
         return titles;
     }
+    @Override
+    public void addTitle(int novelId, Title title) {
+
+    }
+
+    private void changeTitles(int novelId, Title title){
+
+    }
+    @Override
+    public ArrayList<Title> getTitles(int novelId){
+        return null;
+    }
 }

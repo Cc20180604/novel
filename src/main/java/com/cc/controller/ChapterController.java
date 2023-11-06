@@ -1,9 +1,6 @@
 package com.cc.controller;
 
-import com.cc.model.Chapter;
-import com.cc.model.ChapterPage;
-import com.cc.model.ChapterRequest;
-import com.cc.model.Novel;
+import com.cc.model.*;
 import com.cc.service.ChapterService;
 import com.cc.service.FileService;
 import com.cc.util.JsonUtil;
@@ -20,7 +17,6 @@ import java.io.IOException;
 import java.util.HashMap;
 
 @RestController
-@CrossOrigin(originPatterns = "http://localhost:8080")
 @RequestMapping("/chapter")
 @Slf4j
 public class ChapterController {
@@ -35,7 +31,6 @@ public class ChapterController {
      * @param chapterNum
      * @return
      */
-    //@CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @GetMapping("/{novelId}/{chapterNum}")
     @ResponseBody
     public AjaxResult getChapter
@@ -57,15 +52,32 @@ public class ChapterController {
         }
     }
 
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
+    /**
+     * 上传单个章节
+     * @param chapterRequest
+     * @return
+     */
     @PostMapping("/upload")
-    public ChapterRequest upload(@RequestBody ChapterRequest chapterRequest){
+    public AjaxResult upload(@RequestBody ChapterRequest chapterRequest){
+        //上传章节
         try {
             fileService.serChapter(chapterRequest.getId(), chapterRequest.getChapter());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return new AjaxResult(500, "IOException:"+e.getMessage());
         }
-        return chapterRequest;
+        //更改标题集合
+        return new AjaxResult(200,"success");
+    }
+
+    /**
+     * 添加新章节
+     * @param title
+     * @return
+     */
+    @PutMapping("/upload")
+    public AjaxResult addTitle(Integer novelId ,Title title){
+
+        return null;
     }
 
     /**
@@ -74,7 +86,6 @@ public class ChapterController {
      * @param novelFile
      * @return
      */
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @PostMapping("/uploadAll")
     @ResponseBody
     public AjaxResult uploadAll(
@@ -107,7 +118,6 @@ public class ChapterController {
      * @param id
      * @return
      */
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @PostMapping("/chaptersExist/{id}")
     @ResponseBody
     public AjaxResult chaptersExist( @PathVariable(value = "id") int id){
@@ -124,7 +134,6 @@ public class ChapterController {
      * @param id
      * @return
      */
-    @CrossOrigin(originPatterns = "http://127.0.0.1:8848")
     @DeleteMapping("/deleteChapters/{id}")
     @ResponseBody
     public AjaxResult deleteChapters( @PathVariable(value = "id") int id){

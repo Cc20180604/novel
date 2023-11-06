@@ -50,7 +50,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void serChapter(int NovelId, Chapter chapter) throws IOException {
-        String path = chapterPath + NovelId + "/" + chapter.getIndex();
+        String path = chapterPath + NovelId + "/" + chapter.getIndex() + ".chapter";
         NovelUtil.serChapter(chapter,path);
     }
 

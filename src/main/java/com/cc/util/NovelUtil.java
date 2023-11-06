@@ -187,9 +187,6 @@ public class NovelUtil {
     }
 
     public static void serChapter(Chapter chapter, String path) throws IOException {
-
-        //新建章节路径
-        FileUtil.mkdirs(path);
         //持久化为chapter文件
         FileUtil.serObject(chapter, path);
 
