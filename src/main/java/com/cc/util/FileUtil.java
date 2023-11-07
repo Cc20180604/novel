@@ -4,8 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
+import java.util.Arrays;
+
 @Slf4j
 public class FileUtil {
+    private static ObjectInputStream oos;
+
     //序列化对象
     public static void serObject(Object obj, String path) throws IOException {
         //序列化流
@@ -21,13 +25,22 @@ public class FileUtil {
 
 
     //反序列化对象
-    public static Object disSerObject(String path) throws Exception {
+    public static Object disSerObject(String path) throws IOException{
         //反序列化流
         ObjectInputStream oos = new ObjectInputStream(new FileInputStream(path));
         //反序列化对象
-        Object obj = oos.readObject();
-        //刷新关闭
-        oos.close();
+        Object obj = null;
+        try {
+            obj = oos.readObject();
+        } catch (ClassNotFoundException e) {
+            log.error(e.getMessage());
+        } finally {
+            if (oos != null) {
+                //关闭
+                oos.close();
+            }
+        }
+
 
         return obj;
     }
@@ -82,6 +95,8 @@ public class FileUtil {
         //最后删除空文件夹!!!
         file.delete();
     }
+
+
 
 
 }

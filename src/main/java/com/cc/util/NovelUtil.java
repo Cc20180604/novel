@@ -177,7 +177,7 @@ public class NovelUtil {
         FileUtil.mkdirs(chapterRootPath);
 
         //持久化为chapter文件
-        FileUtil.serObject(titles, chapterRootPath + novelId  + ".titles");
+        FileUtil.serObject(titles, chapterRootPath + "titles");
 
     }
     //序列化标题与章节集合
